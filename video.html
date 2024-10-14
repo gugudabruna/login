@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARABÉNS</title>
+
+    <style>
+        body {
+            background: linear-gradient(-45deg, #f200ff, #ff3ddb, #7b42ff, #560af9);
+            background-size: 400% 400%;
+            animation: fundoMexe 10s ease infinite;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #video {
+            border: solid 5px white;
+            border-color: rgb(255, 255, 255);
+            width: 80%;
+            max-width: 900px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        @keyframes fundoMexe {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #video {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #video {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <iframe id="video" 
+        src="https://www.youtube.com/embed/krdUR0Ot2sI?rel=0&modestbranding=1&showinfo=0&autohide=1&iv_load_policy=3"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+</body>
+
+</html>

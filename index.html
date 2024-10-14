@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECRET</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(246, 0, 0);
+            height: 770px;
+            overflow: hidden;
+            
+        }
+
+        #titulo {
+            text-align: center;
+            font-size: 65px;
+            color: black;
+            animation: piscar 1.5s infinite;
+            padding-top: 150px;
+        }
+        
+        @keyframes piscar {
+            0% {color: red;
+            }
+            50% {color: rgb(175, 8, 8);
+            }
+            100% {color: rgb(255, 0, 0);
+            }
+        }
+
+        @keyframes bordaPiscando {
+            0% { color: red;}
+            50% { color: rgb(175, 8, 8);}
+            100% { color: rgb(255, 0, 0);}
+        }
+        @keyframes fundoPiscando {
+            0% { color: rgb(172, 1, 1);}
+            50% { color: rgb(107, 7, 7);}
+            70% { color: rgb(0, 0, 0);}
+            100% { color: rgb(170, 1, 1);}
+        }
+
+        #formulario {
+            text-align: center;
+            padding-top: 100px;
+            animation: piscar 1.5s infinite;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid red;
+            color: white;
+            text-align: center;
+            animation: bordaPiscando 1s infinite;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: white;
+            /* Cor do texto placeholder */
+            opacity: 0.5;
+            /* Deixa o texto placeholder mais transparente */
+        }
+
+        input[type="submit"] {
+            width: 100px;
+            height: 35px;
+            background-color: red; /* Define a cor inicial */
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            animation: fundoPiscando 3s infinite; /* Animação para o fundo do submit piscar */
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+
+        .alert {
+            display: none;
+            /* Esconde a mensagem por padrão */
+            padding: 20px;
+            background-color: green;
+            color: white;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            font-size: 18px;
+        }
+
+        .alert.error {
+            background-color: red;
+        }
+
+        .alert.success {
+            background-color: green;
+        }
+
+        @media (max-width: 768px) {
+            .timeline li {
+                width: calc(100% - 1em);
+            }
+
+            .navbar a {
+                font-size: 1em;
+            }
+
+            .footer img {
+                width: 1.5em;
+            }
+
+            .zoom-modal-content {
+                width: 90%;
+            }
+
+            #video {
+                width: 500px;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar a {
+                padding: 0.5em 0;
+            }
+
+            .timeline li {
+                width: calc(100% - 2em);
+                margin-bottom: 1em;
+            }
+
+            #video {
+                width: 250px;
+            }
+        }
+    </style>
+    <script>
+        function mostrarMensagem(tipo, mensagem) {
+            const alertDiv = document.getElementById("alert");
+            alertDiv.className = 'alert ' + tipo; // Define a classe (success ou error)
+            alertDiv.innerText = mensagem;
+            alertDiv.style.display = "block";
+
+            // Esconde o alerta depois de 3 segundos
+            setTimeout(() => {
+                alertDiv.style.display = "none";
+            }, 3000);
+        }
+
+        function validarLogin() {
+            const userCerto = "kinderovo";
+            const senhaCerta = "herewegoagain";
+            const user = document.getElementById("username").value;
+            const senha = document.getElementById("password").value;
+
+            if (user === userCerto && senha === senhaCerta) {
+                mostrarMensagem("success", "Acesso permitido!");
+                setTimeout(() => {
+                    window.location.href = "./video.html"; // Redireciona após 3 segundos
+                }, 3000);
+            } else {
+                mostrarMensagem("error", "Usuário ou senha incorretos!");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1 id="titulo">USE THE CORRECT USER AND PASSWORD</h1>
+
+    <div id="alert" class="alert"></div> <!-- Div do alerta -->
+
+    <form id="formulario" onsubmit="event.preventDefault(); validarLogin();">
+        USERNAME: <input type="text" id="username" required maxlength="9"><br><br>
+        PASSWORD: <input type="password" id="password" required maxlength="13"><br><br>
+        <input type="submit" value="SUBMIT">
+    </form>
+</body>
+
+</html>
